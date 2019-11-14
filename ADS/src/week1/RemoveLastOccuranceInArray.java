@@ -14,8 +14,11 @@ public class RemoveLastOccuranceInArray {
     public static int[] removeLastOccurrence(int x, int[] arr) {
         if (arr == null || arr.length <= 0) return new int[0];
         int index = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) index = i;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == x) {
+                index = i;
+                break;
+            }
         }
         int[] ret = new int[arr.length - 1];
         for (int j = 0, i = 0; j < arr.length; j++, i++) {
@@ -23,7 +26,7 @@ public class RemoveLastOccuranceInArray {
                 i--;
             } else ret[i] = arr[j];
         }
-        for(int i =0;i<ret.length;i++) {
+        for (int i = 0; i < ret.length; i++) {
             System.out.println(ret[i]);
         }
         return ret;
@@ -33,6 +36,5 @@ public class RemoveLastOccuranceInArray {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 1, 3, 4, 5, 11};
         removeLastOccurrence(1, arr);
-
     }
 }
