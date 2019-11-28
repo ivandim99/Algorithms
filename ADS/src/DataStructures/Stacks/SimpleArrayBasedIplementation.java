@@ -1,5 +1,9 @@
 package DataStructures.Stacks;
 
+/**
+ * FILO.
+ * @param <E>
+ */
 public class SimpleArrayBasedIplementation<E> implements Stack<E> {
     public static final int CAPACITY = 1000;
     private E[] data;
