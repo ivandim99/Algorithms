@@ -90,4 +90,18 @@ public class LinkedPositionalList<E> extends PositionalList<E> {
         node.setElement(e);
         return ret;
     }
+
+    public E  remove(Position<E> p) throws IllegalArgumentException {
+        Node<E> node = validate(p);
+        Node<E> predecessor = node.getPrev();
+        Node<E> successor = node.getNext();
+        predecessor.setNext(successor);
+        successor.setPrev(predecessor);
+        size--;
+        E answer = node.getElement();
+        node.setElement(null);
+        node.setNext(null);
+        node.setPrev(null);
+        return answer;
+    }
 }
