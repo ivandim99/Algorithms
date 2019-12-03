@@ -10,4 +10,5 @@ public interface PriorityQueue<K,V>  {
     Entry<K,V> min();
 
     Entry<K,V> removeMin();
+    
 }
