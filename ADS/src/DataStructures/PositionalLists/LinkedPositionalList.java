@@ -1,6 +1,6 @@
 package DataStructures.PositionalLists;
 
-public class LinkedPositionalList<E> extends PositionalList<E> {
+public class LinkedPositionalList<E> implements PositionalList<E> {
 
     private Node<E> header;
     private Node<E> trailer;
