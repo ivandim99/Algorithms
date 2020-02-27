@@ -1,6 +1,5 @@
 package DataStructures.SinglyLists;
 
-import DataStructures.SinglyLists.Node;
 
 public class SinglyLinkedList<E> {
 

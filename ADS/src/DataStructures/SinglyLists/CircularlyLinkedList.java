@@ -1,6 +1,5 @@
 package DataStructures.SinglyLists;
 
-import DataStructures.SinglyLists.Node;
 
 /**
  * Another LinkedList data structure which also uses nodes but unlike SLL
