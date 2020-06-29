@@ -12,21 +12,14 @@ public class MergingTwoSortedArrayss {
         int size = 0;
         int i = 0;
         int j = 0;
-        while(size < ret.length) {
-            if(i < arr1.length && j < arr2.length) {
-                if(arr1[i] < arr2[j]) {
-                    ret[size++] = arr1[i++];
-                } else {
-                    ret[size++] = arr2[j++];
-                }
-            }
-            else if(i < arr1.length) {
-                ret[size++] = arr1[i++];
-            }
-            else if(j < arr2.length) {
-                ret[size++] = arr2[j++];
-            }
+        while(i < arr1.length && j < arr2.length) {
+            if(arr1[i] < arr2[j]) ret[size++] = arr1[i++];
+            else ret[size++] = arr2[j++];
         }
+        while(i < arr1.length) 
+            ret[size++] = arr1[i++];
+        while(j < arr2.length)
+            ret[size++] = arr2[j++];
         return ret;
     }
 
