@@ -1,0 +1,20 @@
+Dijkstra structure:
+
+-In the first method we receive :
+         * @param n the number of nodes
+         * @param m the number of edges
+         * @param s the starting vertex (1 <= s <= n)
+         * @param t the ending vertex (1 <= t <= n)
+         * @param edges the set of edges of the graph, with endpoints labelled between 1 and n inclusive.
+
+we only use this method to prepare the inputs for the real solve method by doing the following:
+    -Creating a map that contains an integer as a key which is simple and a Node as a value
+    -Then going over all edges and adding the outgoing edges to each Node
+    -then pass the inputs: s,t,the map of nodes,edges to a new method
+
+In the new method:
+    -We create an array for both visited and distances.
+    -We create the priority queue now and add the starting vertex s and set the distance[s] = 0
+    -In the queue we store a Tuple class with int id and int cost.
+    -Now we get into the main while
+
