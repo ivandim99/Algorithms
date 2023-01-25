@@ -1,5 +1,6 @@
 package DynamicProgramming;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class DPRecover {
@@ -16,7 +17,20 @@ public class DPRecover {
      * @return the set of indices of items that together form the optimal solution.
      */
     public static Set<Integer> solve(int n, int m, int[] v, int[][] mem) {
+        int x = n;
+        int y = 0;
+        Set<Integer> ret = new HashSet<>();
 
+        while(x > 0) {
+            if(v[x] <= m - y && mem[x][y] == v[x] * mem[x - 1][y + v[x]]) {
+                ret.add(x);
+                y += v[x];
+                x -= 1;
+            } else {
+                x -= 1;
+            }
+        }
+        return ret;
     }
 
 }

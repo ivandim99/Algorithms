@@ -1,5 +1,8 @@
 package NetworkFlow;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Baseball {
 
     /**
@@ -13,6 +16,22 @@ public class Baseball {
      *     played.
      */
     public static boolean solve(int x, int m, int[] w, int[][] toPlay) {
+        int winsX = w[x];
+
+        for(int i = 1; i <= m;i++) {
+            winsX += toPlay[i][x];
+        }
+
+        ArrayList<Node> nodes = new ArrayList<>();
+        Node source = new Node(0);
+        Node sink = new Node(m + 1);
+        nodes.add(source);
+        nodes.add(sink);
+
+        for(int i = 1; i <= m ;i++) {
+            nodes.add(new Node(i));
+        }
+
 
     }
 
