@@ -1,7 +1,6 @@
 package NetworkFlow;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Baseball {
 
@@ -18,7 +17,7 @@ public class Baseball {
     public static boolean solve(int x, int m, int[] w, int[][] toPlay) {
         int winsX = w[x];
 
-        for(int i = 1; i <= m;i++) {
+        for (int i = 1; i <= m; i++) {
             winsX += toPlay[i][x];
         }
 
@@ -28,11 +27,41 @@ public class Baseball {
         nodes.add(source);
         nodes.add(sink);
 
-        for(int i = 1; i <= m ;i++) {
+        for (int i = 1; i <= m; i++) {
             nodes.add(new Node(i));
         }
 
 
+        for (int i = 1; i <= m; i++) {
+            if(i == x)
+                continue;
+            if(winsX < w[i])
+                return false;
+
+            nodes.get(i).addEdge(sink,winsX - w[i]);
+
+            for(int j = i + 1; j <= m; j++) {
+                if(j == x || toPlay[i][j] == 0) {
+                    continue;
+                }
+
+                Node game = new Node(m);
+                nodes.add(game);
+                source.addEdge(game,toPlay[i][j]);
+                game.addEdge(nodes.get(i),toPlay[i][j]);
+                game.addEdge(nodes.get(j),toPlay[i][j]);
+            }
+        }
+
+        Graph g = new Graph(nodes,source,sink);
+        MaxFlow.maximizeFlow(g);
+
+        for (Edge e : source.getEdges()) {
+            if (e.getFlow() != e.getCapacity()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
