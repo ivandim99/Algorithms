@@ -5,6 +5,16 @@ import java.util.*;
 public class Class {
 }
 
+class Range {
+
+    int min, max;
+
+    public Range(int min, int max) {
+        this.min = min;
+        this.max = max;
+    }
+}
+
 class Match {
 
     int x;
@@ -49,6 +59,67 @@ class Location {
                 Math.sqrt(
                         (this.x - other.x) * (this.x - other.x)
                                 + (this.y - other.y) * (this.y - other.y));
+    }
+}
+
+class Project {
+
+    private int id;
+
+    private int cost;
+
+    private int revenue;
+
+    private List<Integer> requirements;
+
+    public Project(int revenue, int cost) {
+        this.revenue = revenue;
+        this.cost = cost;
+        this.requirements = new ArrayList<>();
+    }
+
+    public Project(int id, int revenue, int cost) {
+        this(revenue, cost);
+        this.id = id;
+    }
+
+    public void addRequirement(int requirement) {
+        requirements.add(requirement);
+    }
+
+    public void addRequirements(List<Integer> requirements) {
+        this.requirements.addAll(requirements);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public int getRevenue() {
+        return revenue;
+    }
+
+    public List<Integer> getRequirements() {
+        return requirements;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{"
+                + "id="
+                + id
+                + ", cost="
+                + cost
+                + ", revenue="
+                + revenue
+                + ", requirements="
+                + requirements
+                + '}'
+                + "\n";
     }
 }
 

@@ -27,6 +27,11 @@ public class DPprep2 {
                 }
                 else {
                     //TODO
+                    //here we are going back from i at max to 0 so we want to see and the else statement we are in
+                    //currently we assume we don not have enough vaccines for the patients of the current day
+                    //so we want to get the min cost of vaccines we need so we know what amount we need to buy
+                    //we have a new total that needs to be at least the amount of patients of today and at most the max
+                    //amount we can store + the number of patients
                 }
             }
         }
