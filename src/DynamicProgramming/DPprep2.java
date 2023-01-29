@@ -14,24 +14,27 @@ public class DPprep2 {
      */
     public static int minimiseCosts(int t, int[] p, int c, int f, int s) {
         int[][] mem = new int[t + 2][s + 1];
-        for(int i = t + 1; i >= 0; i--) {
-            for(int j = 0; j <= s; j++) {
-                if(i == t + 1 && j == 0) {
+        for (int i = t + 1; i >= 0; i--) {
+            for (int j = 0; j <= s; j++) {
+                if (i == t + 1 && j == 0) {
                     mem[i][j] = 0;
-                }
-                if(i == t + 1 && j > 0) {
-                    mem[i][j] = Integer.MAX_VALUE;
-                }
-                if(p[i] <= j) {
+                } else if (i == t + 1 && j > 0) {
+                    mem[i][j] = Integer.MAX_VALUE / 2;
+                } else if (j >= p[i]) {
                     mem[i][j] = mem[i + 1][j - p[i]] + f * (j - p[i]);
-                }
-                else {
-                    //TODO
+                } else {
                     //here we are going back from i at max to 0 so we want to see and the else statement we are in
                     //currently we assume we don not have enough vaccines for the patients of the current day
                     //so we want to get the min cost of vaccines we need so we know what amount we need to buy
                     //we have a new total that needs to be at least the amount of patients of today and at most the max
                     //amount we can store + the number of patients
+                    mem[i][j] = Integer.MAX_VALUE / 2;
+                    for (int new_total = p[i]; new_total <= s + p[i]; new_total++) {
+                        mem[i][j] =
+                                Math.min(
+                                        mem[i][j],
+                                        mem[i + 1][new_total - p[i]] + c + f * (new_total - p[i]));
+                    }
                 }
             }
         }

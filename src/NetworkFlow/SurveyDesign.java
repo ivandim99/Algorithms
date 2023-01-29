@@ -38,7 +38,29 @@ public class SurveyDesign {
         for (int i = 1; i <= k; i++) products[i] = new Node(i);
         // TODO Add customers and products to the NF graph
 
+        int minSum = 0;
+        int maxSum = 0;
 
+        for(int i = 1; i <= n; i++) {
+            nodes.add(customers[i]);
+            source.addEdge(customers[i],customersRange[i].min,customersRange[i].max);
+            minSum += customersRange[i].min;
+            maxSum += customersRange[i].max;
+        }
+
+        for(int i = 1; i <= k; i++) {
+            nodes.add(products[i]);
+            products[i].addEdge(sink,productsRange[i].min,productsRange[i].max);
+        }
+
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= k; j++) {
+                if(!connections.contains(new Connection(i,j)))
+                    customers[i].addEdge(products[j],1);
+            }
+        }
+
+        sink.addEdge(source,minSum,maxSum);
 
         Graph g = new Graph(nodes, source, sink);
         return g.hasCirculation();
