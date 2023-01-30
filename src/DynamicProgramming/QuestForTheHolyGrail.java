@@ -24,7 +24,7 @@ public class QuestForTheHolyGrail {
             }
         }
 
-        mem[1][1] = mem[1][0] = 0; //start is 0
+        mem[1][1] = mem[1][0] = 0; //start is 1
         for (int counter = 1; counter <= n; counter++) {
             for (int i = 1; i <= n; i++) {
                 double[] minEdges = new double[2];
